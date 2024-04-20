@@ -1,5 +1,4 @@
-import React from 'react';
-
+// Player.js
 function Player({ currentTrack }) {
   if (!currentTrack) {
     return (
@@ -9,6 +8,9 @@ function Player({ currentTrack }) {
     );
   }
 
+  // Make sure the URL starts with a process.env.PUBLIC_URL if you're using CRA and the file is in the public folder
+  const trackSrc = process.env.PUBLIC_URL + currentTrack.url;
+
   return (
     <div className="player">
       <div className="track-info">
@@ -16,7 +18,7 @@ function Player({ currentTrack }) {
         <p>Artist: {currentTrack.artist}</p>
       </div>
       <audio controls autoPlay>
-        <source src={currentTrack.url} type="audio/mpeg" />
+        <source src={trackSrc} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>

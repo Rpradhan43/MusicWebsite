@@ -109,3 +109,28 @@ body, html {
 .hidden {
   display: none;
 }
+
+.playlist {
+  /* Add your styling for the playlist sidebar here */
+  background-color: #333;
+  padding: 20px;
+  color: white;
+}
+
+.playlist-button {
+  /* Add your styling for the playlist buttons here */
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px 0;
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.playlist-button:hover {
+  background-color: #555;
+}
