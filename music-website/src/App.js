@@ -4,21 +4,28 @@ import Player from './components/Player';
 import TrackList from './components/TrackList';
 
 function App() {
+  const [currentTrack, setCurrentTrack] = useState(null);
+
   const tracks = [
     { id: 1, name: 'Song One', artist: 'Artist One', url: '/path-to-song-1.mp3' },
     { id: 2, name: 'Song Two', artist: 'Artist Two', url: '/path-to-song-2.mp3' },
-    // Add more tracks as needed
+    // ... more tracks
   ];
-
-  const [currentTrack, setCurrentTrack] = useState(tracks[0]);
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>Music Player</h1>
       </header>
-      <TrackList tracks={tracks} onTrackChange={setCurrentTrack} />
-      <Player currentTrack={currentTrack} />
+      <div className="content">
+        <aside className="sidebar">
+          {/* sidebar content */}
+        </aside>
+        <main className="main-view">
+          <TrackList tracks={tracks} onTrackChange={setCurrentTrack} />
+          <Player currentTrack={currentTrack} />
+        </main>
+      </div>
     </div>
   );
 }
