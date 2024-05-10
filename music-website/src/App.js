@@ -30,8 +30,8 @@ function App() {
                 listeners: '25,000,000'
             });
             setTracks([
-                { id: 3, name: 'test', url: '/Keshi/The_reaper.mp3', album: 'The Reaper', dateAdded: 'Jan 10, 2024' },
-                { id: 4, name: 'test', url: '/Keshi/Skeletons.mp3', album: 'Skeletons', dateAdded: 'Feb 15, 2024' },
+                { id: 3, name: 'The Reaper', url: '/Keshi/The_reaper.mp3', album: 'The Reaper', dateAdded: 'Jan 10, 2024' },
+                { id: 4, name: 'Skeletons', url: '/Keshi/Skeletons.mp3', album: 'Skeletons', dateAdded: 'Feb 15, 2024' },
             ]);
         } else if (artist === 'Abba') {
             setCurrentArtist({
