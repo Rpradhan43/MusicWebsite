@@ -1,0 +1,44 @@
+/* Sidebar.css */
+.sidebar {
+    width: 240px;
+    background-color: #000;
+    padding: 20px;
+    color: #b3b3b3;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar .logo {
+    color: #1DB954;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+.sidebar li:hover {
+    color: white;
+}
+
+.section strong {
+    cursor: pointer;
+    display: block;  /* Make the headers clickable as a block */
+}
+
+.dropdown-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.dropdown-list.open {
+    max-height: 500px; /* Adjust based on the number of items (greater than combined height of all items) */
+}

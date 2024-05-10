@@ -1,28 +1,31 @@
-// Player.js
-function Player({ currentTrack }) {
-  if (!currentTrack) {
+import React from 'react';
+
+function Player({ currentTrack, audioRef }) {
+    if (!currentTrack) return null; // Hide player if no track is selected
+
     return (
-      <div className="player">
-        <p>No track selected</p>
-      </div>
+        <div className="player">
+            <div className="track-info">
+                <img src={currentTrack.cover} alt={currentTrack.name} className="track-cover" />
+                <div>
+                    <h4>{currentTrack.name}</h4>
+                    <p>{currentTrack.artist}</p>
+                </div>
+            </div>
+            <div className="controls">
+                <button onClick={() => audioRef.current.play()}>Play</button>
+                <button onClick={() => audioRef.current.pause()}>Pause</button>
+                <input type="range" min="0" max="1" step="0.01" 
+                    value={audioRef.current.volume}
+                    onChange={(e) => audioRef.current.volume = e.target.value} />
+            </div>
+            <div className="volume-control">
+                <input type="range" min="0" max="1" step="0.01" 
+                    value={audioRef.current.volume}
+                    onChange={(e) => audioRef.current.volume = e.target.value} />
+            </div>
+        </div>
     );
-  }
-
-  // Make sure the URL starts with a process.env.PUBLIC_URL if you're using CRA and the file is in the public folder
-  const trackSrc = process.env.PUBLIC_URL + currentTrack.url;
-
-  return (
-    <div className="player">
-      <div className="track-info">
-        <h4>Playing Now: {currentTrack.name}</h4>
-        <p>Artist: {currentTrack.artist}</p>
-      </div>
-      <audio controls autoPlay>
-        <source src={trackSrc} type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-  );
 }
 
 export default Player;

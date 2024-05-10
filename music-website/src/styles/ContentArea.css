@@ -1,0 +1,35 @@
+.content-area {
+    color: #fff;
+    background-color: #121212;
+    padding: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.tracks-header {
+    display: grid;
+    grid-template-columns: 48px 3fr 2fr 1fr;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #282828;
+}
+
+.track-item {
+    display: grid;
+    grid-template-columns: 48px 3fr 2fr 1fr;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #282828;
+    transition: background-color 0.3s;
+}
+
+.track-item:last-child {
+    border-bottom: none;
+}
+
+.track-item:hover {
+    background-color: #333;
+}
+
+.track-item div {
+    padding: 2px 5px;
+}

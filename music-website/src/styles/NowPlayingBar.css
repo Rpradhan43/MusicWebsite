@@ -1,0 +1,7 @@
+/* NowPlayingBar.css */
+.now-playing-bar {
+    background-color: #282828;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}

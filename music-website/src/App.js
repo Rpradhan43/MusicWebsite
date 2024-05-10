@@ -1,57 +1,71 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState, useRef } from 'react';
+import './styles/App.css';
+import Sidebar from './components/Sidebar';
 import Player from './components/Player';
-import TrackList from './components/TrackList';
-import Playlist from './components/Playlist';
+import TopBar from './components/TopBar';
+import ContentArea from './components/ContentArea';
+import ArtistHeader from './components/ArtistHeader';
 
 function App() {
-  const [currentTrack, setCurrentTrack] = useState(null);
-  const [playlists, setPlaylists] = useState([
-    { 
-      id: 1, 
-      name: 'Playlist 1', 
-      tracks: [
-        { id: 1, name: 'One Dance', artist: 'Drake', url: '/onedance.mp3' },
-        { id: 0, name: 'One Dance2', artist: 'Drake2', url: '/onedance.mp3' },
-        // ... other tracks
-      ] 
-    },
-    { 
-      id: 2, 
-      name: 'Playlist 2', 
-      tracks: [
-        { id: 1, name: 'Test', artist: 'Test', url: '/onedance.mp3' },
-        // ... other tracks
-      ] 
-    },
-    // ... more playlists
-  ]);
-  const [selectedPlaylist, setSelectedPlaylist] = useState(playlists[0]);
+    const [currentTrack, setCurrentTrack] = useState(null);
+    const [tracks, setTracks] = useState([]);
+    const [currentArtist, setCurrentArtist] = useState(null);
+    const audioRef = useRef(new Audio());
 
-  // Function to change the current track
-  const handleTrackChange = (track) => {
-    setCurrentTrack(track);
-  };
+    const handleSelectArtist = (artist) => {
+        if (artist === 'Travis Scott') {
+            setCurrentArtist({
+                name: 'Travis Scott',
+                imageUrl: '/Artists/TravisScott/travisbanner.jpg',
+                listeners: '69,084,021'
+            });
+            setTracks([
+                { id: 1, name: 'Sicko Mode', url: '/Artists/TravisScott/sickomode.mp3', album: 'ASTROWORLD', dateAdded: 'Nov 1, 2023' },
+                { id: 2, name: 'Highest in the Room', url: '/tracks/highest_in_the_room.mp3', album: 'Single', dateAdded: 'Dec 1, 2023' },
+            ]);
+        } else if (artist === 'Keshi') {
+            setCurrentArtist({
+                name: 'Keshi',
+                imageUrl: '/path/to/keshi-image.jpg', // Update with correct image path
+                listeners: '25,000,000'
+            });
+            setTracks([
+                { id: 3, name: 'test', url: '/tracks/test.mp3', album: 'The Reaper', dateAdded: 'Jan 10, 2024' },
+                { id: 4, name: 'test', url: '/tracks/test.mp3', album: 'Skeletons', dateAdded: 'Feb 15, 2024' },
+            ]);
+        } else if (artist === 'Artist_3') {
+            setCurrentArtist({
+                name: 'Keshi',
+                imageUrl: '/path/to/keshi-image.jpg', // Update with correct image path
+                listeners: '25,000,000'
+            });
+            setTracks([
+                { id: 3, name: 'test', url: '/tracks/test.mp3', album: 'The Reaper', dateAdded: 'Jan 10, 2024' },
+                { id: 4, name: 'test', url: '/tracks/test.mp3', album: 'Skeletons', dateAdded: 'Feb 15, 2024' },
+            ]);
+        }
+        
+    };
 
-  // The tracks for the TrackList component are taken from the selected playlist
-  const tracks = selectedPlaylist.tracks;
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Music Player</h1>
-      </header>
-      <div className="content">
-        <aside className="sidebar">
-          <Playlist playlists={playlists} onPlaylistSelect={setSelectedPlaylist} />
-        </aside>
-        <main className="main-view">
-          <TrackList tracks={tracks} onTrackChange={handleTrackChange} />
-          <Player currentTrack={currentTrack} />
-        </main>
-      </div>
-    </div>
-  );
+    const playTrack = (trackUrl) => {
+        const track = tracks.find(t => t.url === trackUrl);
+        setCurrentTrack(track);
+        audioRef.current.src = trackUrl;
+        audioRef.current.play();
+    };
+
+    return (
+        <div className="app">
+            <Sidebar onSearchClick={() => {}} onSelectArtist={handleSelectArtist} />
+            <div className="main-content">
+                <TopBar />
+                {currentArtist && <ArtistHeader artist={currentArtist} />}
+                <ContentArea tracks={tracks} onPlayTrack={playTrack} />
+                <Player currentTrack={currentTrack} audioRef={audioRef} />  // Ensures Player is always rendered
+            </div>
+        </div>
+    );
 }
 
 export default App;
