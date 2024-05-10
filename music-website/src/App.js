@@ -26,12 +26,12 @@ function App() {
         } else if (artist === 'Keshi') {
             setCurrentArtist({
                 name: 'Keshi',
-                imageUrl: '/path/to/keshi-image.jpg', // Update with correct image path
+                imageUrl: '/Keshi/keshi-image.jpg', // Update with correct image path
                 listeners: '25,000,000'
             });
             setTracks([
-                { id: 3, name: 'test', url: '/tracks/test.mp3', album: 'The Reaper', dateAdded: 'Jan 10, 2024' },
-                { id: 4, name: 'test', url: '/tracks/test.mp3', album: 'Skeletons', dateAdded: 'Feb 15, 2024' },
+                { id: 3, name: 'test', url: '/Keshi/The_reaper.mp3', album: 'The Reaper', dateAdded: 'Jan 10, 2024' },
+                { id: 4, name: 'test', url: '/Keshi/Skeletons.mp3', album: 'Skeletons', dateAdded: 'Feb 15, 2024' },
             ]);
         } else if (artist === 'Artist_3') {
             setCurrentArtist({
