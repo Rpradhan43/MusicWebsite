@@ -1,7 +1,8 @@
+// Sidebar.js
 import React, { useState } from 'react';
 import '../styles/Sidebar.css';
 
-function Sidebar({ onSearchClick, onSelectArtist }) {
+function Sidebar({ onSearchClick, onSelectArtist, onSelectPlaylist }) {
     const [showArtists, setShowArtists] = useState(false);
     const [showPlaylists, setShowPlaylists] = useState(false);
 
@@ -10,7 +11,7 @@ function Sidebar({ onSearchClick, onSelectArtist }) {
 
     return (
         <div className="sidebar">
-            <div className="logo">MUSIC</div>
+            <div className="logo">NOT-SPOTIFY</div>
             <ul>
                 <li onClick={onSearchClick}>Search</li>
                 <li>Home</li>
@@ -31,9 +32,8 @@ function Sidebar({ onSearchClick, onSelectArtist }) {
             <div className="section">
                 <strong onClick={togglePlaylists}>PLAYLISTS</strong>
                 <ul className={`dropdown-list ${showPlaylists ? 'open' : ''}`}>
-                    <li>Playlist 1</li>
-                    <li>Playlist 2</li>
-                    <li>Playlist 3</li>
+                    <li onClick={() => onSelectPlaylist(1)}>Chill Vibes</li>
+                    {/* Add more playlists as needed */}
                 </ul>
             </div>
         </div>

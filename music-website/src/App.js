@@ -5,11 +5,13 @@ import Player from './components/Player';
 import TopBar from './components/TopBar';
 import ContentArea from './components/ContentArea';
 import ArtistHeader from './components/ArtistHeader';
+import PlaylistHeader from './components/PlaylistHeader';
 
 function App() {
     const [currentTrack, setCurrentTrack] = useState(null);
     const [tracks, setTracks] = useState([]);
     const [currentArtist, setCurrentArtist] = useState(null);
+    const [currentPlaylist, setCurrentPlaylist] = useState(null);
     const audioRef = useRef(new Audio());
 
     const handleSelectArtist = (artist) => {
@@ -21,7 +23,7 @@ function App() {
             });
             setTracks([
                 { id: 1, name: 'Sicko Mode', url: '/Artists/TravisScott/sickomode.mp3', album: 'ASTROWORLD', dateAdded: 'Nov 1, 2023' },
-                { id: 2, name: 'Highest in the Room', url: '/tracks/highest_in_the_room.mp3', album: 'Single', dateAdded: 'Dec 1, 2023' },
+                { id: 2, name: 'Highest in the Room', url: '/Artists/TravisScott/highest.mp3', album: 'Single', dateAdded: 'Dec 1, 2023' },
             ]);
         } else if (artist === 'Keshi') {
             setCurrentArtist({
@@ -74,6 +76,30 @@ function App() {
                 { id: 12, name: 'Red, Red Wine', url: '/Artists/UB40/redredwine.mp3', album: 'Red, Red Wine', dateAdded: 'Aug 8, 1983' },
             ]);
         } 
+        
+    };
+
+    const playlists = [
+        {
+            id: 1,
+            name: 'Chill Vibes',
+            imageUrl: '',
+            tracks: [
+                { id: 13, name: 'Ocean Eyes', url: '/Tracks/oceaneyes.mp3', album: 'Dont Smile At Me' },
+                { id: 14, name: 'Sicko Mode', url: '/Artists/TravisScott/sickomode.mp3', album: 'ASTROWORLD', dateAdded: 'Nov 1, 2023' },
+                { id: 15, name: 'Highest in the Room', url: '/Artists/TravisScott/highest.mp3', album: 'Single', dateAdded: 'Dec 1, 2023' },
+                { id: 16, name: 'The Reaper', url: '/Artists/Keshi/The_reaper.mp3', album: 'The Reaper', dateAdded: 'Nov 9, 2018' },
+                { id: 17, name: 'Skeletons', url: '/Artists/Keshi/Skeletons.mp3', album: 'Skeletons', dateAdded: 'July 16, 2019' },
+                // More tracks...
+            ],
+        },
+        // More playlists...
+    ];
+
+    const handleSelectPlaylist = (playlistId) => {
+        const playlist = playlists.find(p => p.id === playlistId);
+        setCurrentPlaylist(playlist);
+        setTracks(playlist.tracks);
     };
 
 
@@ -86,12 +112,13 @@ function App() {
 
     return (
         <div className="app">
-            <Sidebar onSearchClick={() => {}} onSelectArtist={handleSelectArtist} />
+            <Sidebar onSearchClick={() => {}} onSelectArtist={handleSelectArtist} onSelectPlaylist={handleSelectPlaylist} />
             <div className="main-content">
                 <TopBar />
                 {currentArtist && <ArtistHeader artist={currentArtist} />}
+                {currentPlaylist && <PlaylistHeader playlist={currentPlaylist} />}
                 <ContentArea tracks={tracks} onPlayTrack={playTrack} />
-                <Player currentTrack={currentTrack} audioRef={audioRef} />  // Ensures Player is always rendered
+                <Player currentTrack={currentTrack} audioRef={audioRef} />
             </div>
         </div>
     );
