@@ -10,7 +10,7 @@ function Sidebar({ onSearchClick, onSelectArtist }) {
 
     return (
         <div className="sidebar">
-            <div className="logo">SPOTIFY</div>
+            <div className="logo">MUSIC</div>
             <ul>
                 <li onClick={onSearchClick}>Search</li>
                 <li>Home</li>
@@ -21,7 +21,10 @@ function Sidebar({ onSearchClick, onSelectArtist }) {
                 <ul className={`dropdown-list ${showArtists ? 'open' : ''}`}>
                     <li onClick={() => onSelectArtist('Travis Scott')}>Travis Scott</li>
                     <li onClick={() => onSelectArtist('Keshi')}>Keshi</li>
-                    <li onClick={() => onSelectArtist('Artist_3')}>Artist_3</li>
+                    <li onClick={() => onSelectArtist('Abba')}>Abba</li>
+                    <li onClick={() => onSelectArtist('Bob Marley')}>Bob Marley</li>
+                    <li onClick={() => onSelectArtist('Earth Wind and Fire')}>Earth Wind and Fire</li>
+                    <li onClick={() => onSelectArtist('UB40')}>UB40</li>
                     {/* Add more artists here as needed */}
                 </ul>
             </div>

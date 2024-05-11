@@ -2,36 +2,79 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
-    background-color: #282828;
-    color: #fff;
+    right: 0;
+    background-color: #181818;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     padding: 10px 20px;
+    color: white;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.5);
+    z-index: 1000;
 }
 
 .track-info {
+    width: 100%;
+    text-align: left;
+    padding-left: 20px; /* Ensures some padding from the edge */
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.controls-and-volume {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
+    padding: 0 20px; /* Adds padding to ensure content doesn't touch the edges */
 }
 
-.track-info img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
-
-.track-info h4, .track-info p {
-    margin: 0;
-}
-
-.controls, .volume-control {
+.controls {
     display: flex;
+    justify-content: center;
     align-items: center;
+    padding-left: 220px;
+    padding-bottom: 20px;
+    flex-grow: 1; /* This will ensure it takes up maximum space for centering */
+}
+
+.control-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: 20px;
+}
+
+.volume-control {
+    width: 200px; /* Keeps volume control at a fixed width */
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.track-progress {
+    width: 100%;
+    position: relative;
+    bottom: 10px; /* Positions it at the bottom */
 }
 
 input[type="range"] {
-    margin: 0 10px;
+    width: 100%; /* Ensures it spans the entire width */
+    -webkit-appearance: none;
+    appearance: none;
+    background: #ffffff;
+    height: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #2196F3;
+    cursor: pointer;
+    border-radius: 50%;
 }
